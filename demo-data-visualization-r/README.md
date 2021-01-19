@@ -2,6 +2,6 @@
 
 ## Lesson plan for DataFest 2021
 
-* Setup
-* ggplot2 basics
-* Visualization!
+* [Setup](Setup.R)
+* [ggplot2 basics](ggplot_intro.md)
+* [Visualization!](Visualization.R)
