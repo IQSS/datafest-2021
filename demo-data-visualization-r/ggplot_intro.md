@@ -1,7 +1,7 @@
 ---
 title: "Plotting and data visualization in R"
 author: "Mary Piper, Meeta Mistry, Radhika Khetani"
-date: "Wednesday, December 4, 2019"
+date: "Tuesday, January 19, 2021"
 ---
 
 Approximate time: 40 minutes
@@ -140,10 +140,25 @@ Great, that is looking a lot better!
 
 ### Chaging the color scheme
 
+Let's say we don't like the colors as they are and want to change them. There are many packages available with color palettes that you can use, e.g. [RColorBrewer](https://www.r-graph-gallery.com/38-rcolorbrewers-palettes.html), [viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) among others. Today we will be using the viridis package with its color-blind-friendly coloe palette. You should have loaded the library during the setup section.
 
+The viridis package has functions that work with ggplot, like `scale_color_viridis()` and `scale_fill_viridis()`. Which of these do you think we should use?
 
+Since we are using the aesthetic argument `fill`, the appropriate function for us to change our boxplot colors is `scale_fill_viridis()`. We have to let the function know that our colors are not on a continuous scale and we need 51 discrete colors (default is discrete=F). 
 
+```r
+ggplot(US_cases_long_week) +
+  geom_boxplot(aes(x= state, y = cases_rate_100K, fill = state)) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 40, hjust = 1)) +
+  scale_fill_viridis(discrete = T)
+```
 
-> *NOTE:* You can use the `example("geom_boxplot")` to explore a multitude of different aesthetics and layers that can be added to your plot. As you scroll through the different plots, take note of how the code is modified. You can use this with any of the different geometric object layers available in ggplot2 to learn how you can easily modify your plots! 
+Now we have a more reasonable looking plot compared to where we started out and we have colored it with more accesible colors too!
 
-> *NOTE:* RStudio provide this very [useful cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf) for plotting using `ggplot2`. Different example plots are provided and the associated code (i.e which `geom` or `theme` to use in the appropriate situation.) We also encourage you to persuse through this useful [online reference](https://ggplot2.tidyverse.org/reference/) for working with ggplot2.
+This lesson is just a very high level introduction to layers and themes in ggplot2. There is so much more you can do with it, to help we have added some resources below.
+
+## Resources:
+* You can use the `example("geom_boxplot")` to explore a multitude of different aesthetics and layers that can be added to your plot. As you scroll through the different plots, take note of how the code is modified. You can use this with any of the different geometric object layers available in ggplot2 to learn how you can easily modify your plots! 
+* RStudio provide this very [useful cheatsheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf) for plotting using `ggplot2`. Different example plots are provided and the associated code (i.e which `geom` or `theme` to use in the appropriate situation.) 
+* We also encourage you to persuse through this useful [online reference](https://ggplot2.tidyverse.org/reference/) for working with ggplot2.
