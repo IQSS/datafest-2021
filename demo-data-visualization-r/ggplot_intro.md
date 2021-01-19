@@ -140,7 +140,7 @@ Great, that is looking a lot better!
 
 ### Chaging the color scheme
 
-Let's say we don't like the colors as they are and want to change them. There are many packages available with color palettes that you can use, e.g. [RColorBrewer](https://www.r-graph-gallery.com/38-rcolorbrewers-palettes.html), [viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) among others. Today we will be using the viridis package with its color-blind-friendly coloe palette. You should have loaded the library during the setup section.
+Let's say we don't like the colors as they are and want to change them. There are many packages available with color palettes that you can use, e.g. [RColorBrewer](https://www.r-graph-gallery.com/38-rcolorbrewers-palettes.html), [viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) among others. Today we will be using the viridis package with its color-blind-friendly color palette. You should have loaded the viridis library during setup.
 
 The viridis package has functions that work with ggplot, like `scale_color_viridis()` and `scale_fill_viridis()`. Which of these do you think we should use?
 
