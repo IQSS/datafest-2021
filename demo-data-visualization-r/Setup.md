@@ -7,16 +7,19 @@ Please work through these instructions before proceeding to the Visualization co
 ## 1. Package installation
 
 ```r
-#Install the packages we need for today. 
+# create a function to check for package installation status and to install uninstalled packages followed by loading all required packages
 ipak <- function(pkg){
   new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
   if(length(new.pkg)) install.packages(new.pkg, dependencies = TRUE)
   sapply(pkg, require, character.only = TRUE)
 }
 
+# Create a vector with all the required packages
 packages <- c("viridis", "glmmTMB",  "effects", "dataverse", "sf", "remotes",
               "leaflet", "mapview", "htmltools", "htmlwidgets", "tigris",   
               "lubridate", "DHARMa", "tidycensus", "tidyverse", "tidymodels")
+
+# run the custom function for all the required packages
 ipak(packages)
 
 # mapview may need to be installed from Github
@@ -33,12 +36,12 @@ DOI <- "doi:10.7910/DVN/HIDLTK"
 covid <- get_dataset(DOI)
 ```
 
-Extract only those files that we need from the downloaded dataset.
+The downloaded dataset has multiple files, extract only those files that we need from the downloaded dataset.
 
 ```r
-#Dataset has multiple files, so let's get the files we need.
 # get data file for COVID-19 cases
 US_cases_file <- get_file("us_state_confirmed_case.tab", dataset = DOI)
+
 # convert raw vector to dataframe
 US_cases <- read_csv(US_cases_file)
 ```
