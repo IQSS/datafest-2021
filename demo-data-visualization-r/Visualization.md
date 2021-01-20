@@ -115,8 +115,10 @@ mapviewOptions(fgb = FALSE, # set to FALSE to embed data directly into the HTML
                leafletWidth = 800,
                legend.pos = "bottomright")
 ```
+Now we'll create our map. Note: if we only want to plot certain columns of the attribute table we can use 
+argument zcol. Each column will be rendered as a separate layer. These layers will be colored 
+according to the selected attributes. [Here's a useful reference](https://r-spatial.github.io/mapview/articles/articles/mapview_01-basics.html).
 
-Then create the map object
 ```r
 USmap <- US_cases_long_week_spatial %>% 
   # subset data for only latest week
@@ -125,7 +127,7 @@ USmap <- US_cases_long_week_spatial %>%
   mapview(zcol = "cases_rate_100K", layer.name = "Case rates (per 100K)")
 ```
 
-Finally, print the map!
+Print map
 ```r
-USmap@map
+USmap
 ```
