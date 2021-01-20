@@ -6,6 +6,6 @@
 2. [ggplot2 basics](ggplot_intro.md)
 3. [Visualization!](Visualization.md)
 
-## Scripts to copy and paste (or download)
+## Scripts to copy and paste (or right click and download)
 * [Setup.R](Setup.R)
 * [Visualization.R](Visualization.R)
