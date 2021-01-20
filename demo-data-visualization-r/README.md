@@ -4,4 +4,4 @@
 
 * [Setup](Setup.R)
 * [ggplot2 basics](ggplot_intro.md)
-* [Visualization!](Visualization.R)
+* [Visualization!](Visualization.md)
