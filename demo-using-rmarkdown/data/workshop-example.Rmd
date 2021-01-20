@@ -21,17 +21,16 @@ In this report we present the code used to download the data, the data clean up 
 
 We will need several packages for data cleanup and visualization. 
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 #Install the packages we need for visualization. 
 ipak <- function(pkg){
   new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
   if(length(new.pkg)) install.packages(new.pkg, dependencies = TRUE)
   sapply(pkg, require, character.only = TRUE)
 }
-
 packages <- c("viridis", "glmmTMB",  "effects", "dataverse", "sf", "remotes",
               "leaflet", "mapview", "htmltools", "htmlwidgets", "tigris",   
-              "lubridate", "DHARMa", "tidycensus", "tidyverse", "tidymodels")
+              "lubridate", "DHARMa", "tidycensus", "tidyverse", "tidymodels", "knitr")
 ipak(packages)
 ```
 
@@ -42,10 +41,8 @@ First, we need to get the digital object identifier for the Covid dataset in Dat
 ```{r}
 # get the digital object identifier for the Dataverse dataset
 DOI <- "doi:10.7910/DVN/HIDLTK"
-
 # retrieve the contents of the dataset
 covid <- get_dataset(DOI)
-
 #Dataset has multiple files, so let's get the files we need.
 # get data file for COVID-19 cases
 US_cases_file <- get_file("us_state_confirmed_case.tab", dataset = DOI)
@@ -99,7 +96,7 @@ US_cases_long_week <- US_cases_long %>%
             cases_count_pos = sum(cases_count_pos), 
             cases_rate_100K = sum(cases_rate_100K)) %>% 
   drop_na()
-  ```
+```
 
 ## Plots by state
 
@@ -136,9 +133,8 @@ ggplot(US_cases_long, aes(x = date, y = cases_cum_rate_100K)) +
 us_state_geo <- tigris::states(class = "sf", cb = TRUE) %>%
   # rename `NAME` variable to `state`
   rename(state = NAME)
-kable(us_state_geo)
-
-kable(US_cases_long_week)
+kable(head(us_state_geo))
+kable(head(US_cases_long_week))
 ```
 
 ```{r}
@@ -146,8 +142,7 @@ kable(US_cases_long_week)
 US_cases_long_week_spatial <- us_state_geo %>% 
   left_join(US_cases_long_week, by = c("state")) %>% 
   filter( state != "Alaska" & state != "Hawaii") 
-
-kable(US_cases_long_week_spatial)
+kable(head(US_cases_long_week_spatial))
 ```
 
 ```{r}
@@ -162,25 +157,6 @@ US_cases_long_week_spatial %>%
   #scale_color_viridis(direction = -1, name = "Case rate\n(per 100K population)") +
   labs(title = "COVID-19 case rates for last week",
        caption = "Data Sources: Harvard Dataverse, 2020; U.S. Census Bureau, 2019")
-```
-
-### Interactive map
-
-```{r}
-# set some options for the graph
-mapviewOptions(fgb = FALSE, # set to FALSE to embed data directly into the HTML
-               leafletWidth = 800,
-               legend.pos = "bottomright")
-
-# create map
-USmap <- US_cases_long_week_spatial %>% 
-  # subset data for only latest week
-  filter(week_of_year == max(week_of_year, na.rm = TRUE)) %>%
-  # map starts here
-  mapview(zcol = "cases_rate_100K", layer.name = "Case rates (per 100K)")
-
-# print map
-USmap@map
 ```
 
 ## Final thoughts
