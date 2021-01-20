@@ -155,7 +155,7 @@ US_cases_long_week_spatial %>%
   coord_sf(crs = 5070, datum = NA) +
   scale_fill_viridis(direction = 1, name = "Case rate\n(per 100K population)") + 
   #scale_color_viridis(direction = -1, name = "Case rate\n(per 100K population)") +
-  labs(title = "COVID-19 case rates for last week",
+  labs(title = "COVID-19 case rates for the last week of 2020",
        caption = "Data Sources: Harvard Dataverse, 2020; U.S. Census Bureau, 2019")
 ```
 
