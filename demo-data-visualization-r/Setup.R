@@ -1,20 +1,24 @@
 #PACKAGE INSTALL
 
-#Install the packages we need for today. 
+# create a function to check for package installation status and to install uninstalled packages followed by loading all required packages
 ipak <- function(pkg){
   new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
   if(length(new.pkg)) install.packages(new.pkg, dependencies = TRUE)
   sapply(pkg, require, character.only = TRUE)
 }
 
+# Create a vector with all the required packages
 packages <- c("viridis", "glmmTMB",  "effects", "dataverse", "sf", "remotes",
               "leaflet", "mapview", "htmltools", "htmlwidgets", "tigris",   
               "lubridate", "DHARMa", "tidycensus", "tidyverse", "tidymodels")
+
+# run the custom function for all the required packages
 ipak(packages)
 
 # mapview may need to be installed from Github
 # remotes::install_github("r-spatial/mapview")
 
+###################
 
 #DATA DOWNLOAD
 
@@ -27,8 +31,13 @@ covid <- get_dataset(DOI)
 #Dataset has multiple files, so let's get the files we need.
 # get data file for COVID-19 cases
 US_cases_file <- get_file("us_state_confirmed_case.tab", dataset = DOI)
+
 # convert raw vector to dataframe
 US_cases <- read_csv(US_cases_file)
+
+###################
+
+#DATA CLEANUP
 
 #Reformat, clean, and more intuitively name the data
 US_cases_long <- US_cases %>%
@@ -53,6 +62,10 @@ US_cases_long <- US_cases %>%
          cases_rate_100K = (cases_count_pos / pop_count_2010) * 1e5,
          cases_cum_rate_100K = (cases_cum / pop_count_2010) * 1e5)
 
+###################
+
+#AGGREGATING DATA FOR VIZ
+
 # aggregate to weekly level (for later modeling)
 US_cases_long_week <- US_cases_long %>%
   group_by(GEOID, state, week_of_year) %>%
@@ -60,5 +73,7 @@ US_cases_long_week <- US_cases_long %>%
             cases_count_pos = sum(cases_count_pos), 
             cases_rate_100K = sum(cases_rate_100K)) %>% 
   drop_na()
+
+###################
 
 #You're ready to move over to Visualization.R
