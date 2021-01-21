@@ -138,7 +138,7 @@ ggplot(US_cases_long_week) +
 
 Great, that is looking a lot better!
 
-### Chaging the color scheme
+### Changing the color scheme
 
 Let's say we don't like the colors as they are and want to change them. There are many packages available with color palettes that you can use, e.g. [RColorBrewer](https://www.r-graph-gallery.com/38-rcolorbrewers-palettes.html), [viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) among others. Today we will be using the viridis package with its color-blind-friendly color palette. You should have loaded the viridis library during setup.
 
