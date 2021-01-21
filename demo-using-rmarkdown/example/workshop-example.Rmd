@@ -145,7 +145,7 @@ US_cases_long_week_spatial <- us_state_geo %>%
 kable(head(US_cases_long_week_spatial))
 ```
 
-```{r}
+```{r map}
 US_cases_long_week_spatial %>% 
   # subset data for only latest week
   filter(week_of_year == max(week_of_year, na.rm = TRUE)) %>% 
