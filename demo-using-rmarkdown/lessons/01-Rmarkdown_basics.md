@@ -49,22 +49,14 @@ Ready to get started?
 
 Before we delve into the details, we will start with an activity to show you what an RMarkdown file (.Rmd extension) looks like, and how to generate the resulting HTML report using the `knit()` function (which is part of the R [knitr package](https://yihui.name/knitr/)).
 
-1. Open up RStudio and **create a new project** in a new directory called `rmd_workshop`. Remember the location in computer where you create this project.
-2. **Right click [this RMarkdown file](https://raw.githubusercontent.com/hbctraining/Training-modules/master/Rmarkdown/data/workshop-example.Rmd)**. Download it (using **Save Link As**) and place it within the `rmd_workshop` project directory.
-3. **Download and uncompress [this data folder](../data/data.zip?raw=true)** within the `rmd_workshop` project directory.
+1. Launch RStudio using FAS OnDemand.
+2. Copy over x from shared_data to your home directory.
 4. **Open the .rmd file** in RStudio.
 5. **knit the markdown** by clicking on the `Knit` button located at the top of your script editor pane.
 
 <img src="../img/r-knit-button.png">
 
 In the console, you will see a flurry of text scrolling by. The text indicates progress while each code chunk is being executed. Once the document is finished 'knitting', a new window will be automatically opening up with the HTML report that was just generated. 
-
-> **NOTE**: If you run into an error when knitting the markdown, make sure the directory structure of the `rmd_workshop` project is set properly as shown below:
-> - The `data` folder should be in the same directory as `workshop-example.rmd` file
-> - Two files (`counts.rpkm.csv` and `mouse_exp_design.csv`) are located inside the `data` folder
-> <p align="center">
-> <img src="../img/workingDir_screenshot.png" width="450">
-> </p>
 
 ---
 
