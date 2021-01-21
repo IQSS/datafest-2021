@@ -88,7 +88,7 @@ US_cases_long <- US_cases %>%
 
 Finally, we want to subest the dataset and aggregate information such that each week's counts are aggregated for visualizing the data readily.
 
-```{r}
+```{r aggregate}
 # aggregate to weekly level (for later modeling)
 US_cases_long_week <- US_cases_long %>%
   group_by(GEOID, state, week_of_year) %>%
