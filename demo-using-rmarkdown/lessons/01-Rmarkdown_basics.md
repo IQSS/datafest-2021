@@ -1,7 +1,7 @@
 ---
 title: Making your research reproducible
 subtitle: knitr and RMarkdown
-author: Michael J. Steinbaugh, Meeta Mistry, Radhika Khetani, Jihe Liu, Mary Piper
+author: Michael J. Steinbaugh, Meeta Mistry, Radhika Khetani, Jihe Liu, Mary Piper, Steven Worthington
 ---
 
 ## Learning Objectives
