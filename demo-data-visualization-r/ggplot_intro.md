@@ -1,6 +1,6 @@
 ---
 title: "Plotting and data visualization in R"
-author: "Mary Piper, Meeta Mistry, Radhika Khetani"
+author: "DataFest 2021 Team"
 date: "Tuesday, January 19, 2021"
 ---
 
