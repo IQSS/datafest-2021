@@ -50,7 +50,7 @@ Ready to get started?
 Before we delve into the details, we will start with an activity to show you what an RMarkdown file (.Rmd extension) looks like, and how to generate the resulting HTML report using the `knit()` function (which is part of the R [knitr package](https://yihui.name/knitr/)).
 
 1. Launch RStudio using FAS OnDemand.
-2. Copy over `workshop-example.Rmd` from `shared_data/rmarkdown_reports/` to your `home` directory.
+2. Copy over **`workshop-example.Rmd`** from **`shared_data/rmarkdown_reports/`** to your **`home`** directory.
 4. **Open the `workshop-example.Rmd` file** in RStudio.
 5. **knit the markdown** by clicking on the `Knit` button located at the top of your script editor pane.
 
@@ -86,7 +86,9 @@ This section has information listed in [YAML format](https://yaml.org/), and is 
 
 ```
 ## Project details
-In this example report we are using a *toy dataset* to determine the impact of age, genotype and cell type on the average gene expression in mice. This toy study has 12 mice from **2 genotypes** (KO and Wt) and **2 cell types** (typeA and typeB). 
+This report provides an example of how to acquire potentially interesting predictors of COVID-19 cases from the U.S. Census Bureau.
+
+The COVID-19 dataset we accessed above provides daily COVID-19 case counts for each U.S State, together with population counts from the 2010 Decennial Census. This should be enough information to produce some interesting visualizations. For modeling, however, we really only have one useful predictor in the dataset --- time. This section describes some options for acquiring other potentially interesting predictors of COVID-19 cases.
 
 ## Setup
 
@@ -138,7 +140,7 @@ Once we have finished creating an RMarkdown file, we finally need to "knit" the 
 
 > Note that when creating your own reports, you will very likely find yourself knitting the report periodically as you work through rather than just once at the end. It is an iterative process usually since you may have to turn off warnings, or if you decide you need a figure to be larger/smaller, or updating the descriptive text in the document to be informative (for others and your future self).
 
-When you click on the "knit" button, by default an HTML report will be generated. If you would prefer a different document format, this can be specified in the YAML header with the `output:` parameter as discussed above, or you can also click on the button in the panel above the script and click on "Knit" to get the various options as shown in the image under the 5th part of the exercise above.
+When you click on the "knit" button, by default an HTML report will be generated. If you would prefer a different document format, this can be specified in the YAML header with the `output:` parameter as discussed above, or you can also click on the button in the panel above the script and click on "Knit" to get the various options as shown in the image under the 4th part of the exercise above.
 
 > **Note**: *PDF rendering is sometimes problematic, especially when running R remotely, like on the cluster. If you run into problems, it's likely an issue related to [pandoc](http://pandoc.org).*
 
