@@ -50,7 +50,7 @@ Ready to get started?
 Before we delve into the details, we will start with an activity to show you what an RMarkdown file (.Rmd extension) looks like, and how to generate the resulting HTML report using the `knit()` function (which is part of the R [knitr package](https://yihui.name/knitr/)).
 
 1. Launch RStudio using FAS OnDemand.
-2. Copy over **`workshop-example.Rmd`** from **`shared_data/rmarkdown_reports/`** to your **`home`** directory.
+2. Copy over **`workshop-example.Rmd`** from **`shared_data/Reports_Rmarkdown/`** to your **`home`** directory.
 4. **Open the `workshop-example.Rmd` file** in RStudio.
 5. **knit the markdown** by clicking on the `Knit` button located at the top of your script editor pane.
 
